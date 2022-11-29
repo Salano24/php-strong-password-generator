@@ -1,17 +1,6 @@
 <?php
 
-$psCharacters = ["a", "b", "c", "d", "e", "f", "A", "B", "C", "D", "E", "F", 1, 2, 3, 4, 5, 6, "!", "?", "$", "%",];
-
-function generatePassword($lenghtPass)
-{
-    $characters = '.,!=_+*0123456789abcdefABCDEF';
-    $charactersLen = strlen($characters);
-    $passwordString = '';
-    for ($i = 0; $i < $lenghtPass; $i++) {
-        $passwordString .= $characters[rand(0, $charactersLen - 1)];
-    }
-    return $passwordString;
-}
+include __DIR__ . '/functions.php';
 
 
 ?>
@@ -38,9 +27,7 @@ function generatePassword($lenghtPass)
     h1{
         color: #7f8a99;
     }
-    h3{
-        color: #0dcaf0;
-    }
+    
   </style>
 </head>
 <body>
@@ -52,8 +39,8 @@ function generatePassword($lenghtPass)
           <div class="label d-flex flex-column">
             <label class="fw-bold" for="lunghezza">Lunghezza Password:</label>
             <div class="button mt-5">
-                <button type="submit" name="create" class="btn btn-primary">Submit</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
+                <button type="submit" name="create" class="btn btn-info text-dark fw-bold">Submit</button>
+                <button type="reset" class="btn btn-secondary text-light fw-bold">Reset</button>
             </div>
           
           </div>
@@ -66,9 +53,9 @@ function generatePassword($lenghtPass)
     </div>
     <div class="password text-center bg-light p-5 mt-3 container">
         <h1 class="mb-5">La password generata è:</h1>
-        <h3>
+        <h3 class=" text-info border border-info pt-3 pb-3">
             <?php
-        $passwordCreator = isset($_GET["password"]);
+       
         if ($passwordCreator) {
             echo generatePassword($_GET["password"]);
         }
